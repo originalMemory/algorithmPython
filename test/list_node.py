@@ -8,7 +8,7 @@
 @create  : 2021/2/3 1:37 下午:59
 """
 from listNode.model import ListNode
-from listNode import linkedListCycle
+from listNode import linkedListCycle, palindromeLinkedList
 import unittest
 
 
@@ -26,6 +26,19 @@ class ListNodeTest(unittest.TestCase):
 
         node2 = ListNode(1)
         self.assertEqual(s.hasCycle(node2), False)
+
+    def test_is_palindrome(self):
+        s = palindromeLinkedList.Solution()
+
+        node1 = ListNode(1)
+        node1.next = ListNode(2)
+        self.assertEqual(s.isPalindrome(node1), False)
+
+        node2 = ListNode(1)
+        node2.next = ListNode(2)
+        node2.next.next = ListNode(2)
+        node2.next.next.next = ListNode(1)
+        self.assertEqual(s.isPalindrome(node2), True)
 
 
 if __name__ == '__main__':
